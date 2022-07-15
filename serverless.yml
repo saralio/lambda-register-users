@@ -71,3 +71,4 @@ functions:
                 emailId: true
                 emailSendTimeZone: false
                 emailSendTime: false
+                emailSendTimeZoneOffset: false

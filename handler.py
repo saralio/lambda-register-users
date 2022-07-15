@@ -18,10 +18,12 @@ def register_user(event, context):
     if 'emailSendTime' not in data or 'emailSendTimeZone' not in data:
         warnings.warn('Time related information is not provided, using default values of 9AM GMT')
         email_send_time = '0900'
-        email_send_time_zone = '+530'
+        email_send_time_zone = 'Asia/Calcutta'
+        email_send_time_offset = '+330'
     else:
         email_send_time = data['emailSendTime']
         email_send_time_zone = data['emailSendTimeZone']
+        email_send_time_offset = str(data['emailSendTimeZoneOffset'])
 
     email_id = data['emailId']
 
@@ -51,7 +53,8 @@ def register_user(event, context):
         'emailSendTime': {'S': email_send_time},
         'emailSendTimeZone': {'S': email_send_time_zone},
         'createdAt': {'S': created_at},
-        'updatedAt': {'S': updated_at}
+        'updatedAt': {'S': updated_at},
+        'emailSendTimeZoneOffset': {'S': email_send_time_offset}
     }
 
     # write the todo to the database
