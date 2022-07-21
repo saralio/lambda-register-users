@@ -49,12 +49,12 @@ def register_user(event, context):
 
     item = {
         'id': {'S': str(uuid.uuid4())},
-        'emailId': {'S': email_id},
-        'emailSendTime': {'S': email_send_time},
-        'emailSendTimeZone': {'S': email_send_time_zone},
+        'emailId': {'S': email_id.strip()},
+        'emailSendTime': {'S': email_send_time.strip()},
+        'emailSendTimeZone': {'S': email_send_time_zone.strip()},
         'createdAt': {'S': created_at},
         'updatedAt': {'S': updated_at},
-        'emailSendTimeZoneOffset': {'S': email_send_time_offset}
+        'emailSendTimeZoneOffset': {'S': email_send_time_offset.strip()}
     }
 
     # write the todo to the database
